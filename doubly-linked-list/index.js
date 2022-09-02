@@ -155,7 +155,27 @@ class DoublyLinkedList {
         }
     }
 
+    reverse() {
+        let current = this.head;
+        let previousNode = null;
+
+        while(current !== null){
+            previousNode = current.prev;
+            current.prev = current.next;
+            current.next = previousNode
+            current = current.prev
+        }
+        let temp = this.head
+        this.head = this.tail;
+        this.tail = temp;
+         
+
+        console.log(this);
+        return this;
+    }
+    // implement reverse!
 }
+
 
 const list = new DoublyLinkedList;
 
@@ -167,7 +187,8 @@ list.push('mog');
 
 list.get(2);
 list.insert('harker', 2);
-list.remove(2)
+// list.remove(2)
+list.reverse();
 
 // ['dog', 'park', 't', 'd', 'mog']
 
