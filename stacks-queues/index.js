@@ -22,7 +22,7 @@ class Stack{
             this.first = newNode;
         }
         this.size++;
-        console.log(this)
+        console.log(this);
         return this;
     }  
     
@@ -74,10 +74,10 @@ class Queue{
 
         let temp = this.first;
         this.first = this.first.next;
-        this.size--
-        console.log(temp)
-        console.log(this)
-        return temp
+        this.size--;
+        console.log(temp);
+        console.log(this);
+        return temp;
     }
 }
 const queue = new Queue();
