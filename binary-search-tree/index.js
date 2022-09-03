@@ -106,6 +106,28 @@ class BinarySearchTree{
         return visited;
     }
 
+    dfs(){
+        const values = [];
+        let current = this.root;
+        const helper = (node) => {
+            if(!node.val){
+                return null;
+            }
+            values.push(node.val);
+            
+            if(node.left){
+                current = node.left;
+                helper(current);
+            }
+            if(node.right){
+                current = node.right;
+                helper(current);
+            }
+            console.log(values)
+        }
+        helper(current);
+    }
+
 }
 
 const tree = new BinarySearchTree();
@@ -132,5 +154,5 @@ tree.insert(3);
 tree.insert(8);
 tree.insert(20);
 //  
-tree.bfs();
+tree.dfs();
 console.log(tree);
