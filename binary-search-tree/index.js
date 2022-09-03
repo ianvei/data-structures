@@ -13,33 +13,44 @@ class BinarySearchTree{
 
     insert(val){
         const newNode = new Node(val);
-        if(this.root === null){
+
+        if(!this.root){
             this.root = newNode;
+            console.log(this.root)
             return this;
         }
+
         let currentNode = this.root;
+        let flag = true;
 
-        while(val > currentNode.val){
-            if(!currentNode.right){
-                currentNode.right = newNode
-                console.log(tree)
-                return tree
+        while(flag){
+            if(val === currentNode.val){
+                flag = false;
+                return undefined
             }
-            currentNode = currentNode.right
-            
-        }
-
-        while(val < currentNode.val){
-            if(!currentNode.left){
-                currentNode.left = newNode;
-                console.log(tree)
-                return tree
+            if(val > currentNode.val){
+                if(!currentNode.right){
+                    currentNode.right = newNode
+                    // console.log(tree)
+                    flag = false;
+                    return tree
+                }
+                currentNode = currentNode.right
+            } else {
+                if(val < currentNode.val){
+                    if(!currentNode.left){
+                        currentNode.left = newNode;
+                        // console.log(tree)
+                        flag = false;
+                        return tree
+                    }
+                    currentNode = currentNode.left
+                }
             }
-            currentNode = currentNode.left
         }
-        // console.log('uhh')
-    }   
-    
+        flag = false;
+        return tree
+    }    
 
 }
 
@@ -54,6 +65,7 @@ const tree = new BinarySearchTree();
 // tree.root.left.left = new Node(3);
 // tree.root.left.right = new Node(8);
 tree.insert(10);
+tree.insert(5);
 tree.insert(6);
 tree.insert(8);
 tree.insert(15);
@@ -61,6 +73,11 @@ tree.insert(3);
 
 tree.insert(20);
 tree.insert(13);
+tree.insert(25);
+tree.insert(22);
+tree.insert(1);
+tree.insert(2);
+tree.insert(2);
 // tree.insert(8);
 console.log(tree);
 // console.log(tree);
