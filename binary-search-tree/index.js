@@ -106,7 +106,7 @@ class BinarySearchTree{
         return visited;
     }
 
-    dfs(){
+    dfsPreOrder(){
         const values = [];
         let current = this.root;
         const helper = (node) => {
@@ -123,29 +123,64 @@ class BinarySearchTree{
                 current = node.right;
                 helper(current);
             }
-            console.log(values)
+            
+            return values;
         }
         helper(current);
+        console.log(values);
+        return values;
+    }
+
+    dfsPostOrder(){
+        const values = [];
+        let current = this.root;
+        const helper = (node) => {
+            if(!node.val){
+                return null;
+            }
+            if(node.left){
+                current = node.left;
+                helper(current);
+            }
+            if(node.right){
+                current = node.right;
+                helper(current);
+            }
+            values.push(node.val);
+            return values;
+        }
+        helper(current);
+        console.log(values);
+        return values;
+    }
+
+    dfsInOrder(){
+        const values = [];
+        let current = this.root;
+        const helper = (node) => {
+            if(!node.val){
+                return null;
+            }
+            if(node.left){
+                current = node.left;
+                helper(current);
+            }
+            values.push(node.val);
+            if(node.right){
+                current = node.right;
+                helper(current);
+            }
+            
+            return values;
+        }
+        helper(current);
+        console.log(values);
+        return values;
     }
 
 }
 
 const tree = new BinarySearchTree();
-
-// tree.insert(10);
-// tree.insert(5);
-// tree.insert(6);
-// tree.insert(8);
-// tree.insert(15);
-// tree.insert(3);
-// tree.insert(20);
-// tree.insert(13);
-// tree.insert(25);
-// tree.insert(22);
-// tree.insert(1);
-// tree.insert(2);
-// tree.insert(2);
-
 
 tree.insert(10);
 tree.insert(6);
@@ -153,6 +188,6 @@ tree.insert(15);
 tree.insert(3);
 tree.insert(8);
 tree.insert(20);
-//  
-tree.dfs();
+ 
+tree.dfsInOrder();
 console.log(tree);
