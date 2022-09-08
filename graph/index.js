@@ -116,10 +116,5 @@ graph.addEdge('C', "E")
 graph.addEdge('D', "E")
 graph.addEdge('D', "F")
 graph.addEdge('E', "F")
-// graph.generateVisited();
-// graph.depthFirst('A');
 graph.breadthFirst("A");
 
-// graph.removeVertex("Tokyo")
-// graph.removeEdge('Tokyo', 'Aspen')
-// graph.removeEdge('Tokyo', 'Dallas')
